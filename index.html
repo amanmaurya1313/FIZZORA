@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>FIZZORA Soda Experience</title>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- AOS -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"/>
+
+  <style>
+
+    *{
+      font-family:'Outfit',sans-serif;
+    }
+
+    body{
+      background:black;
+    }
+
+    /* Animated gradient */
+    .animated-gradient{
+      background-size:300% 300%;
+      animation:gradientMove 8s ease infinite;
+    }
+
+    @keyframes gradientMove{
+      0%{background-position:0% 50%;}
+      50%{background-position:100% 50%;}
+      100%{background-position:0% 50%;}
+    }
+
+    /* Floating animation */
+    .float{
+      animation:float 5s ease-in-out infinite;
+    }
+
+    @keyframes float{
+      0%{transform:translateY(0px);}
+      50%{transform:translateY(-20px);}
+      100%{transform:translateY(0px);}
+    }
+
+    /* Glass */
+    .glass{
+      background:rgba(255,255,255,0.05);
+      backdrop-filter:blur(12px);
+      border:1px solid rgba(255,255,255,0.08);
+    }
+
+    /* Glow */
+    .glow:hover{
+      box-shadow:0 0 40px rgba(255,255,255,0.25);
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar{
+      width:10px;
+    }
+
+    ::-webkit-scrollbar-thumb{
+      background:linear-gradient(to bottom,#f97316,#3b82f6);
+      border-radius:20px;
+    }
+
+    /* Marquee */
+    .marquee{
+      overflow:hidden;
+      white-space:nowrap;
+    }
+
+    .marquee-content{
+      display:inline-block;
+      animation:marquee 18s linear infinite;
+    }
+
+    @keyframes marquee{
+      from{transform:translateX(0);}
+      to{transform:translateX(-50%);}
+    }
+
+    /* Pulse Glow */
+    .pulse-glow{
+      animation:pulseGlow 3s infinite;
+    }
+
+    @keyframes pulseGlow{
+      0%{box-shadow:0 0 0 rgba(249,115,22,0.4);}
+      50%{box-shadow:0 0 50px rgba(249,115,22,0.8);}
+      100%{box-shadow:0 0 0 rgba(249,115,22,0.4);}
+    }
+
+  </style>
+</head>
+
+<body class="min-h-screen bg-black text-white overflow-x-hidden scroll-smooth">
+
+<!-- Scroll Progress -->
+<div id="progressBar"
+class="fixed top-0 left-0 h-1 bg-gradient-to-r from-orange-500 via-pink-500 to-blue-500 z-[9999] w-full origin-left scale-x-0"></div>
+
+<!-- Navbar -->
+<nav class="fixed top-0 left-0 w-full z-50 backdrop-blur-xl bg-black/40 border-b border-white/10">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+
+    <h1 class="text-3xl font-black tracking-wider bg-gradient-to-r from-orange-400 via-green-400 to-blue-500 text-transparent bg-clip-text">
+      FIZZORA
+    </h1>
+
+    <div class="hidden md:flex gap-8 text-sm font-semibold">
+      <a href="#home" class="hover:text-orange-400 transition">Home</a>
+      <a href="#flavors" class="hover:text-green-400 transition">Flavors</a>
+      <a href="#experience" class="hover:text-blue-400 transition">Experience</a>
+      <a href="#gallery" class="hover:text-pink-400 transition">Gallery</a>
+      <a href="#faq" class="hover:text-yellow-400 transition">FAQ</a>
+      <a href="#contact" class="hover:text-blue-300 transition">Contact</a>
+    </div>
+
+    <button class="px-5 py-2 rounded-full bg-gradient-to-r from-orange-500 to-pink-500 hover:scale-105 transition-all duration-300 shadow-xl shadow-orange-500/40">
+      Order Now
+    </button>
+
+  </div>
+</nav>
+
+<!-- Hero -->
+<section id="home" class="relative h-screen flex items-center justify-center text-center overflow-hidden">
+
+  <div class="absolute inset-0 bg-cover bg-center scale-110 animate-pulse opacity-40"
+  style="background-image:url('https://images.unsplash.com/photo-1613478223719-2ab802602423?w=600&auto=format&fit=crop&q=60');">
+  </div>
+
+  <div class="absolute w-[700px] h-[700px] rounded-full bg-orange-500/20 blur-3xl -top-40 -left-20"></div>
+  <div class="absolute w-[600px] h-[600px] rounded-full bg-blue-500/20 blur-3xl bottom-0 right-0"></div>
+
+  <div class="relative z-10 max-w-5xl px-6" data-aos="fade-up">
+
+    <h2 class="text-6xl md:text-8xl font-black leading-tight mb-6">
+      POP THE
+      <span class="block bg-gradient-to-r from-orange-400 via-green-400 to-blue-500 text-transparent bg-clip-text animated-gradient">
+        FRESHNESS
+      </span>
+    </h2>
+
+    <p class="text-lg md:text-2xl text-gray-300 max-w-3xl mx-auto mb-10">
+      Dive into the coolest soda experience with bold flavors, no added colors,
+      recyclable cans, and immersive experience.
+    </p>
+
+    <div class="flex flex-wrap items-center justify-center gap-5">
+
+      <button class="px-8 py-4 rounded-full bg-orange-500 hover:scale-110 transition-all duration-300 shadow-2xl shadow-orange-500/40 text-lg font-bold pulse-glow">
+        Explore Flavors
+      </button>
+
+      <button class="px-8 py-4 rounded-full border border-white/20 hover:bg-white/10 transition-all duration-300 text-lg font-bold">
+        Watch Ad
+      </button>
+
+    </div>
+  </div>
+</section>
+
+<!-- Marquee -->
+<section class="py-6 bg-zinc-950 border-y border-white/10">
+  <div class="marquee">
+    <div class="marquee-content text-2xl font-black uppercase tracking-[8px] text-white/20">
+      FIZZORA • COOL DRINKS • ZERO BORING • FRESHNESS • ENERGY • SPARKLING • FIZZORA • COOL DRINKS •
+    </div>
+  </div>
+</section>
+
+<!-- Flavors -->
+<section id="flavors" class="py-32 px-6 bg-gradient-to-b from-black to-zinc-950">
+
+  <div class="max-w-7xl mx-auto">
+
+    <div class="text-center mb-20" data-aos="fade-up">
+      <h2 class="text-5xl md:text-6xl font-black mb-5">
+        Signature Flavors
+      </h2>
+
+      <p class="text-gray-400 text-lg max-w-2xl mx-auto">
+        Every flavor has its own vibe, colors, taste, and personality.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+
+      <!-- Orange -->
+      <div data-aos="zoom-in"
+      class="group relative overflow-hidden rounded-[35px] bg-gradient-to-br from-orange-500 to-red-500 p-8 hover:-translate-y-4 transition-all duration-500 shadow-2xl shadow-orange-500/30">
+
+        <div class="absolute inset-0 opacity-10 bg-cover"
+        style="background-image:url('https://media.giphy.com/media/l0MYEqEzwMWFCg8rm/giphy.gif');"></div>
+
+        <div class="relative z-10">
+
+          <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExOXl4c2t4aWc3Z2ZzMjRxaWpkdHJoMXN0YTB5d3dwMXhnMHhlYmhteSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/5c04K2KOOBJ1FvSHYM/giphy.gif"
+          class="w-60 mx-auto rounded-3xl mb-8 hover:scale-110 transition duration-500 float">
+
+          <h3 class="text-4xl font-black mb-4">
+            Orange Blast
+          </h3>
+
+          <p class="text-orange-100 mb-6 leading-relaxed">
+            A tropical citrus explosion with energetic vibes and sparkling freshness.
+          </p>
+
+          <button class="w-full py-4 rounded-full bg-white text-orange-600 font-black hover:scale-105 transition-all duration-300">
+            Taste Now
+          </button>
+
+        </div>
+      </div>
+
+      <!-- Green -->
+      <div data-aos="zoom-in"
+      class="group relative overflow-hidden rounded-[35px] bg-gradient-to-br from-green-400 to-emerald-700 p-8 hover:-translate-y-4 transition-all duration-500 shadow-2xl shadow-green-500/30">
+
+        <div class="absolute inset-0 opacity-10 bg-cover"
+        style="background-image:url('https://media.giphy.com/media/l4FGuhL4U2WyjdkaY/giphy.gif');"></div>
+
+        <div class="relative z-10">
+
+          <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExeno2emRpdHVsZm1sNDBka21uMzAwNm9iNWUzMGQ2ZGhpbmVnaGNsZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/GzYNhZFLbY6z92Og5H/giphy.gif"
+          class="w-60 mx-auto rounded-3xl mb-8 hover:scale-110 transition duration-500 float">
+
+          <h3 class="text-4xl font-black mb-4">
+            Apple Rush
+          </h3>
+
+          <p class="text-green-100 mb-6 leading-relaxed">
+            Crisp green apple bubbles packed with a refreshing cool kick.
+          </p>
+
+          <button class="w-full py-4 rounded-full bg-white text-green-700 font-black hover:scale-105 transition-all duration-300">
+            Feel Fresh
+          </button>
+
+        </div>
+      </div>
+
+      <!-- Blue -->
+      <div data-aos="zoom-in"
+      class="group relative overflow-hidden rounded-[35px] bg-gradient-to-br from-blue-500 to-indigo-900 p-8 hover:-translate-y-4 transition-all duration-500 shadow-2xl shadow-blue-500/30">
+
+        <div class="absolute inset-0 opacity-10 bg-cover"
+        style="background-image:url('https://media.giphy.com/media/f9k1tV7HyORcngKF8v/giphy.gif');"></div>
+
+        <div class="relative z-10">
+
+          <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExZnlpcWwwbnJ4amdiNzZvZHB0ZTB0dGkwenphMnM1dGhzM3hidDFlMCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Lk7N9Nyp6lOoVjV4KQ/giphy.gif"
+          class="w-60 mx-auto rounded-3xl mb-8 hover:scale-110 transition duration-500 float">
+
+          <h3 class="text-4xl font-black mb-4">
+            Blueberry Wave
+          </h3>
+
+          <p class="text-blue-100 mb-6 leading-relaxed">
+            Deep berry fizz mixed with electric midnight energy.
+          </p>
+
+          <button class="w-full py-4 rounded-full bg-white text-blue-700 font-black hover:scale-105 transition-all duration-300">
+            Dive In
+          </button>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Experience -->
+<section id="experience" data-aos="fade-up"
+class="relative py-32 overflow-hidden bg-black">
+
+  <div class="absolute inset-0 bg-fixed bg-cover bg-center opacity-20"
+  style="background-image:url('https://images.unsplash.com/photo-1457518919282-b199744eefd6?w=600&auto=format&fit=crop&q=60');">
+  </div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-6">
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+
+      <div>
+
+        <h2 class="text-6xl font-black mb-8 leading-tight">
+          Interactive <br> Soda Experience
+        </h2>
+
+        <p class="text-gray-300 text-lg leading-relaxed mb-8">
+          FIZZORA is redefining refreshment by bringing you the ultimate cold soda experience—guilt-free and packed with bold, authentic taste.
+        </p>
+
+        <div class="space-y-5">
+
+          <div class="p-5 rounded-3xl glass hover:bg-white/10 transition-all duration-300">
+            ✨ Smooth taste
+          </div>
+
+          <div class="p-5 rounded-3xl glass hover:bg-white/10 transition-all duration-300">
+            🚀 Immersive Products
+          </div>
+
+          <div class="p-5 rounded-3xl glass hover:bg-white/10 transition-all duration-300">
+            🌈 Dynamic Flavors
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="relative flex items-center justify-center">
+
+        <div class="absolute w-80 h-80 bg-blue-500/30 blur-3xl rounded-full"></div>
+
+        <img src="https://media2.giphy.com/media/Lk7N9Nyp6lOoVjV4KQ/200.gif"
+        class="relative z-10 rounded-[40px] shadow-2xl shadow-blue-500/30 hover:scale-105 transition-all duration-500 float">
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="py-32 px-6 bg-gradient-to-b from-zinc-950 to-black">
+
+  <div class="max-w-7xl mx-auto">
+
+    <div class="text-center mb-20" data-aos="fade-up">
+
+      <h2 class="text-6xl font-black mb-5">
+        What People Say
+      </h2>
+
+      <p class="text-gray-400 text-lg">
+        Loved by soda fans around the world.
+      </p>
+
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-10">
+
+      <div data-aos="fade-right"
+      class="glass p-8 rounded-[35px] glow transition duration-500">
+
+        <div class="text-yellow-400 text-2xl mb-4">
+          ★★★★★
+        </div>
+
+        <p class="text-gray-300 mb-6">
+          “The most futuristic soda experience I’ve ever had.”
+        </p>
+
+        <h4 class="font-bold text-xl">
+          Alex Carter
+        </h4>
+
+      </div>
+
+      <div data-aos="fade-up"
+      class="glass p-8 rounded-[35px] glow transition duration-500">
+
+        <div class="text-yellow-400 text-2xl mb-4">
+          ★★★★★
+        </div>
+
+        <p class="text-gray-300 mb-6">
+          “Apple Rush tastes insanely refreshing and premium.”
+        </p>
+
+        <h4 class="font-bold text-xl">
+          Sophia Lee
+        </h4>
+
+      </div>
+
+      <div data-aos="fade-left"
+      class="glass p-8 rounded-[35px] glow transition duration-500">
+
+        <div class="text-yellow-400 text-2xl mb-4">
+          ★★★★★
+        </div>
+
+        <p class="text-gray-300 mb-6">
+          “This website feels like a next-gen soda universe.”
+        </p>
+
+        <h4 class="font-bold text-xl">
+          Daniel Smith
+        </h4>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Gallery -->
+<section id="gallery" class="py-32 px-6 bg-black">
+
+  <div class="max-w-7xl mx-auto">
+
+    <div class="text-center mb-20" data-aos="fade-up">
+
+      <h2 class="text-6xl font-black mb-5">
+        Flavor Gallery
+      </h2>
+
+      <p class="text-gray-400 text-lg">
+        Explore the colorful world of FIZZORA.
+      </p>
+
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+      <div class="overflow-hidden rounded-[30px] group" data-aos="zoom-in">
+        <img src="https://images.unsplash.com/photo-1509391618207-32f1fa13c1d2?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fG9yYW5nZXxlbnwwfHwwfHx8MA%3D%3D"
+        class="w-full h-[450px] object-cover group-hover:scale-110 transition duration-700">
+      </div>
+
+      <div class="overflow-hidden rounded-[30px] group" data-aos="zoom-in">
+        <img src="https://images.unsplash.com/photo-1471943038886-87c772c31367?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Z3JlZW4lMjBhcHBsZXxlbnwwfHwwfHx8MA%3D%3D"
+        class="w-full h-[450px] object-cover group-hover:scale-110 transition duration-700">
+      </div>
+
+      <div class="overflow-hidden rounded-[30px] group" data-aos="zoom-in">
+        <img src="https://images.unsplash.com/photo-1537899573-a7d2f3011e6e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGJsdWViZXJyeXxlbnwwfHwwfHx8MA%3D%3D"
+        class="w-full h-[450px] object-cover group-hover:scale-110 transition duration-700">
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="py-32 px-6 bg-zinc-950">
+
+  <div class="max-w-4xl mx-auto">
+
+    <div class="text-center mb-16" data-aos="fade-up">
+
+      <h2 class="text-6xl font-black mb-5">
+        FAQ
+      </h2>
+
+    </div>
+
+    <div class="space-y-6">
+
+      <div class="glass rounded-3xl p-6" data-aos="fade-up">
+
+        <h3 class="text-2xl font-bold mb-3">
+          Are the drinks recyclable?
+        </h3>
+
+        <p class="text-gray-400">
+          Yes, all FIZZORA cans are eco-friendly and recyclable.
+        </p>
+
+      </div>
+
+      <div class="glass rounded-3xl p-6" data-aos="fade-up">
+
+        <h3 class="text-2xl font-bold mb-3">
+          Do flavors contain artificial colors?
+        </h3>
+
+        <p class="text-gray-400">
+          No. FIZZORA focuses on authentic taste with cleaner ingredients.
+        </p>
+
+      </div>
+
+      <div class="glass rounded-3xl p-6" data-aos="fade-up">
+
+        <h3 class="text-2xl font-bold mb-3">
+          Is FIZZORA available worldwide?
+        </h3>
+
+        <p class="text-gray-400">
+          Currently expanding globally with selected markets.
+        </p>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact"
+class="py-32 px-6 bg-black relative overflow-hidden">
+
+  <div class="absolute w-[500px] h-[500px] bg-pink-500/20 blur-3xl rounded-full -top-40 -right-40"></div>
+
+  <div class="max-w-5xl mx-auto relative z-10">
+
+    <div class="text-center mb-20" data-aos="fade-up">
+
+      <h2 class="text-6xl font-black mb-5">
+        Get In Touch
+      </h2>
+
+      <p class="text-gray-400 text-lg">
+        Connect with the FIZZORA universe.
+      </p>
+
+    </div>
+
+    <form class="grid md:grid-cols-2 gap-8">
+
+      <input type="text"
+      placeholder="Your Name"
+      class="glass p-5 rounded-2xl outline-none">
+
+      <input type="email"
+      placeholder="Your Email"
+      class="glass p-5 rounded-2xl outline-none">
+
+      <textarea placeholder="Message"
+      class="glass p-5 rounded-2xl outline-none md:col-span-2 h-40"></textarea>
+
+      <button class="md:col-span-2 py-5 rounded-full bg-gradient-to-r from-orange-500 to-pink-500 font-black text-xl hover:scale-105 transition-all duration-300 pulse-glow">
+        Send Message
+      </button>
+
+    </form>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="py-16 px-6 bg-zinc-950 border-t border-white/10">
+
+  <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-10">
+
+    <div>
+
+      <h1 class="text-4xl font-black bg-gradient-to-r from-orange-400 via-pink-400 to-blue-500 text-transparent bg-clip-text mb-4">
+        FIZZORA
+      </h1>
+
+      <p class="text-gray-400">
+        Refreshment redefined with immersive flavors and futuristic vibes.
+      </p>
+
+    </div>
+
+    <div>
+
+      <h3 class="font-bold text-xl mb-4">
+        Company
+      </h3>
+
+      <ul class="space-y-3 text-gray-400">
+        <li><a href="#">About</a></li>
+        <li><a href="#">Flavors</a></li>
+        <li><a href="#">Careers</a></li>
+      </ul>
+
+    </div>
+
+    <div>
+
+      <h3 class="font-bold text-xl mb-4">
+        Support
+      </h3>
+
+      <ul class="space-y-3 text-gray-400">
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Privacy</a></li>
+      </ul>
+
+    </div>
+
+    <div>
+
+      <h3 class="font-bold text-xl mb-4">
+        Follow Us
+      </h3>
+
+      <div class="flex gap-4">
+
+        <div class="w-12 h-12 rounded-full glass flex items-center justify-center hover:scale-110 transition">
+          🔥
+        </div>
+
+        <div class="w-12 h-12 rounded-full glass flex items-center justify-center hover:scale-110 transition">
+          ⚡
+        </div>
+
+        <div class="w-12 h-12 rounded-full glass flex items-center justify-center hover:scale-110 transition">
+          🚀
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="text-center text-gray-500 mt-16">
+    © 2026 FIZZORA Soda Experience. Designed by Aman.
+  </div>
+
+</footer>
+
+<!-- AOS -->
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+<script>
+
+AOS.init({
+  duration: 1200,
+  once: false,
+  mirror: true,
+  offset: 120
+});
+
+window.addEventListener('scroll',()=>{
+
+  const scrollTop = window.scrollY;
+  const docHeight = document.body.scrollHeight - window.innerHeight;
+  const progress = scrollTop / docHeight;
+
+  document.getElementById('progressBar').style.transform =
+  `scaleX(${progress})`;
+
+});
+
+</script>
+</body>
+</html>
